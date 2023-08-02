@@ -493,6 +493,10 @@ z_{0 h} = z_{0 w} = z_{0 m} \exp \left[-0.13\left(Re_{*}\right)^{0.45}\right]
 
 
 \section{一维植被湍流交换模型}\label{一维植被湍流交换模型}
+\begin{mymdframed}{代码}
+本节对应的代码文件为\texttt{MOD\_LeafTemperature.F90、MOD\_Thermal.F90}。
+\end{mymdframed}
+
 对于有植被覆盖部分的陆地表面，陆地与大气总湍流输运通量为植被冠层顶空气与大气之间的湍流输送，其动量通量$\tau_p$、感热通量$H_p$和水汽通量$E_p$表达为：
 \begin{equation}
 \tau_{p, x}=-f_{\text {sig }} \rho_{atm} \frac{u_{atm}}{r_{a m}}
@@ -654,6 +658,10 @@ $\frac{dq_{sat}^{T_g}}{dT_g}$的计算见章节~\ref{饱和水汽压(比湿)及�
 
 
 \section{三维植被湍流交换模型}
+\begin{mymdframed}{代码}
+本节对应的代码文件为\texttt{MOD\_LeafTemperature.F90}。
+\end{mymdframed}
+
 三维植被湍流交换模型是考虑植被树冠水平空间分布以及不同植被类型垂直分层(同三维植被辐射传输模型植被结构假设)，
 以一维植被湍流交换过程为基础，同样采用Monin–-Obukhov相似性理论进行计算。为了与一维植被湍流计算相统一，
 与CoLM2014相比，本版本模型在零平面位移($d$)、粗糙度($z_0$)、叶片空气动力学阻抗($r_b$)以及对地的空气动力学阻抗($r_d$)计算上有所更新。
