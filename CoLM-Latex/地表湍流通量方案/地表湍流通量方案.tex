@@ -738,8 +738,9 @@ r_{d}=\int_{z_{0 \mathrm{hg}}}^{d+z_{0}} \frac{1}{K(z)} d z
 本节对应的代码文件为\texttt{MOD\_RoughnessLength.F90}。
 \end{mymdframed}
 
-\citet{raupach1992drag,raupach1994simplified}的植被粗糙度计算方案假设中性条件，也就是忽略了稳定度的影响，而诸多研究表明稳定度对粗糙度具有不可忽略的影响。
-以\citet{raupach1992drag,raupach1994simplified}方案为基础，我们发展了一个考虑稳定度影响的植被粗糙度方案。
+\citet{raupach1992drag,raupach1994simplified}的植被粗糙度计算方案假设中性条件，也就是忽略了稳定度的影响，
+而诸多研究表明稳定度对粗糙度具有不可忽略的影响。以\citet{raupach1992drag,raupach1994simplified}方案为基础，
+我们发展了一个考虑稳定度影响的植被粗糙度方案 \citep{liu2023roughnesslength}。
 \begin{equation}\label{zOh}
 \frac{z_{0}}{h}=\left(1-\frac{d}{h}\right) \exp \left(-\kappa \frac{u_{h}}{u_{*}}+\Psi_{h}\right)
 \end{equation}
