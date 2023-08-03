@@ -733,6 +733,25 @@ r_{d}=\int_{z_{0 \mathrm{hg}}}^{d+z_{0}} \frac{1}{K(z)} d z
 其中$z_{0hg}$表示用于潜热/感热交换计算的粗糙度\citep{zeng1998effect}。
 
 
+\subsection{考虑稳定度影响的植被粗糙度方案}
+\begin{mymdframed}{代码}
+本节对应的代码文件为\texttt{MOD\_RoughnessLength.F90}。
+\end{mymdframed}
+
+\citet{raupach1992drag,raupach1994simplified}的植被粗糙度计算方案假设中性条件，也就是忽略了稳定度的影响，而诸多研究表明稳定度对粗糙度具有不可忽略的影响。
+以\citet{raupach1992drag,raupach1994simplified}方案为基础，我们发展了一个考虑稳定度影响的植被粗糙度方案。
+\begin{equation}\label{zOh}
+\frac{z_{0}}{h}=\left(1-\frac{d}{h}\right) \exp \left(-\kappa \frac{u_{h}}{u_{*}}+\Psi_{h}\right)
+\end{equation}
+其中%
+%$\kappa=0.4$为 von K\'arman 常数。
+$\Psi_h$为下层粗糙度影响函数，设置为0.193。$u_\ast$是摩擦速度，$u_h$是冠层顶的风速，二者比值计算如下：
+\begin{equation}\label{ustrarOuh}
+\frac{u_{*}}{u_{h}}=\min \left[\left(C_{S}+C_{R} \lambda\right)^{0.5}, 0.3\right]
+\end{equation}
+其中$C_S=0.003$，为无植被情况时$h$高度的拖曳系数；$C_R$为植被覆盖区域的拖曳系数。$\lambda$表示植被迎风面积指数 (FAI)：$\lambda=1-\exp{\left(-0.5 \cdot (\text {LAI}+\text {SAI})\right)}$。
+
+
 \subsection{单层植被湍流交换}
 单层植被不同于100\%植被覆盖假设，而是考虑植被树冠之间可能存在空隙，
 即植被树冠存在一定的水平分布，树冠覆盖度可介于0$\sim$100\%之间。这种植被结果假设与三维植被辐射模型假设一致。
