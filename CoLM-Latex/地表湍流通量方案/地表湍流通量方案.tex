@@ -672,7 +672,7 @@ CoLM2014假设$d$和$z_0$与植被高度成固定比例，即$d=\frac{2}{3}h$，
 这对于稀疏植被可能并不成立\citep{zeng2007consistent}。在本版本，$d$的计算采用\citet{choudhury1988}的方案，
 是通过拟合\citet{shaw1982aerodynamic}二阶闭合理论结果得到：
 \begin{equation}\label{dOh}
-\frac{d}{h}=1.1 \ln \left(1+\left(c_{d} \cdot \text {LAI} \right)^{0.25}\right)
+\frac{d}{h}=1.1 \ln \left(1+\left(c_{d} \cdot (\text {LAI} + \text {SAI})\right)^{0.25}\right)
 \end{equation}
 其中$c_d=0.2$，表示单位面积叶片平均拖曳系数。粗糙度计算采用\citet{raupach1992drag,raupach1994simplified}方案：
 \begin{equation}\label{zOh}
