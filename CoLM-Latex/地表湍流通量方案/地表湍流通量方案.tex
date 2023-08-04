@@ -763,7 +763,13 @@ K=\frac{\kappa u_{*} (z-d)} {\varphi \phi }
 其中$\zeta = (z-d)/L$为无量纲稳定度参数，$L$为Monin-Obukhov长度(定义见章节~\ref{基本理论})。
 
 根据一阶湍流闭合(即$K$理论)，粗糙子层以上($z>h$)及以下($z_0 + d<z \leq h$)的风速梯度可表达为：
-
+\begin{equation}\label{kz_u_rsl}
+\frac{\kappa (z-d) u_{*}}{\varphi \phi} \frac{\partial U}{\partial z}=u_{*}^2
+\end{equation}
+方程(\ref{kz_u_rsl})从$z=z_0+d$积分到$z=h$，有：
+\begin{equation}\label{u_rsl_htop}
+\frac{\kappa U}{u_{*}} = \ln {\frac{h-d}{z_{0}}} + \Psi_{h}
+\end{equation}
 
 
 \subsection{单层植被湍流交换}
