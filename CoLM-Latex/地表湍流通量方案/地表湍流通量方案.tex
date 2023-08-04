@@ -664,7 +664,7 @@ $\frac{dq_{sat}^{T_g}}{dT_g}$的计算见章节~\ref{饱和水汽压(比湿)及�
 
 三维植被湍流交换模型是考虑植被树冠水平空间分布以及不同植被类型垂直分层(同三维植被辐射传输模型植被结构假设)，
 以一维植被湍流交换过程为基础，同样采用Monin–-Obukhov相似性理论进行计算。为了与一维植被湍流计算相统一，
-与CoLM2014相比，本版本模型在零平面位移($d$)、粗糙度($z_0$)、叶片空气动力学阻抗($r_b$)以及对地的空气动力学阻抗($r_d$)计算上有所更新。
+与CoLM2014相比，本版本模型在零平面位移($d$)、粗糙度($z_0$)、叶片空气动力学阻抗($r_b$)以及对地的空气动力学阻抗($r_d$)等的计算上有了新发展。
 
 
 \subsection{100\%覆盖植被情景}
@@ -740,17 +740,30 @@ r_{d}=\int_{z_{0 \mathrm{hg}}}^{d+z_{0}} \frac{1}{K(z)} d z
 
 \citet{raupach1992drag,raupach1994simplified}的植被粗糙度计算方案假设中性条件，也就是忽略了稳定度的影响，
 而诸多研究表明稳定度对粗糙度具有不可忽略的影响。以\citet{raupach1992drag,raupach1994simplified}方案为基础，
-我们发展了一个考虑稳定度影响的植被粗糙度方案 \citep{liu2023roughnesslength}。
-\begin{equation}\label{zOh}
-\frac{z_{0}}{h}=\left(1-\frac{d}{h}\right) \exp \left(-\kappa \frac{u_{h}}{u_{*}}+\Psi_{h}\right)
+我们发展了一个考虑稳定度影响的植被粗糙度计算方案 \citep{liu2023roughnesslength}，详述如下。
+
+考虑具有以下一般形式的湍流扩散系数：
+\begin{equation}\label{eddydiffusivity}
+K=\frac{\kappa u_{*} (z-d)} {\varphi \phi }
 \end{equation}
-其中%
-%$\kappa=0.4$为 von K\'arman 常数。
-$\Psi_h$为下层粗糙度影响函数，设置为0.193。$u_\ast$是摩擦速度，$u_h$是冠层顶的风速，二者比值计算如下：
-\begin{equation}\label{ustrarOuh}
-\frac{u_{*}}{u_{h}}=\min \left[\left(C_{S}+C_{R} \lambda\right)^{0.5}, 0.3\right]
+其中$\kappa=0.4$为von K\'arman常数，$u_{*}$为摩擦速度。$\varphi$为冠层粗糙子层(roughness sublayer)影响函数，定义为：
+\begin{equation}
+\varphi = \begin{cases}
+   \frac{z-d} {z_{w}-d}, & h<z<z_{w} \text { 时} \\
+   1, & z \geq z_{w} \text { 时} \\
+\end{cases}
 \end{equation}
-其中$C_S=0.003$，为无植被情况时$h$高度的拖曳系数；$C_R$为植被覆盖区域的拖曳系数。$\lambda$表示植被迎风面积指数 (FAI)：$\lambda=1-\exp{\left(-0.5 \cdot (\text {LAI}+\text {SAI})\right)}$。
+其中$h$为树高，$z_{w}$为粗糙子层顶。$\phi$为稳定度函数，采用\citet{dyer1974review}关系式：
+\begin{equation}
+\phi(\zeta) = \begin{cases}
+   (1-16\zeta)^{-1/4}, & \zeta<0 \text { 时} \\
+   1+5\zeta, & \zeta \geq 0 \text { 时} \\
+\end{cases}
+\end{equation}
+其中$\zeta = (z-d)/L$为无量纲稳定度参数，$L$为Monin-Obukhov长度(定义见章节~\ref{基本理论})。
+
+根据一阶湍流闭合(即$K$理论)，粗糙子层以上($z>h$)及以下($z_0 + d<z \leq h$)的风速梯度可表达为：
+
 
 
 \subsection{单层植被湍流交换}
