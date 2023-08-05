@@ -780,9 +780,21 @@ z_{0} = (h-d)\exp (-\kappa \gamma + \Psi_{h})
 \begin{align}\label{u_rsl_iner}
 \frac{\kappa U_{h}}{u_{*}} =& \ln \left(\frac{z-d}{z_{0}}\right) + \Psi_{h} + \int_{h}^{z_{w}} \frac{\varphi \phi - 1}{z-d} \,dz
 + \int_{z_{w}}^{z} \frac{\varphi \phi - 1}{z-d} \,dz \nonumber \\
-=& \ln \left(\frac{z-d}{z_{0}}\right) + \Psi_{h} + \left(\int_{h}^{z_{w}} \frac{\phi}{z_{w}-d} \,dz - \ln {\frac{z_{w}-d}{h-d}}\right)
-+ \int_{z_{w}}^{z} \frac{\varphi \phi - 1}{z-d} \,dz
+=& \ln \left(\frac{z-d}{z_{0}}\right) + \Psi_{h} + \left[\int_{h}^{z_{w}} \frac{\phi}{z_{w}-d} \,dz - \ln \left(\frac{z_{w}-d}{h-d}\right) \right]
++ \int_{z_{w}}^{z} \frac{\phi - 1}{z-d} \,dz
 \end{align}
+根据Garratt [1992]：
+\begin{equation}
+\int_{z_{w}}^{z} \frac{\phi - 1}{z-d} \,dz = -\psi_u \left(\frac{z-d}{L} \right) + -\psi_u \left(\frac{z_{w}-d}{L} \right)
+\end{equation}
+其中$\psi_u(\chi )$在稳定和不稳定条件下具有不同的形式：
+\begin{equation}
+   \psi_u(\chi ) = \begin{cases}
+      2\ln \left(\frac{1+x}{2} \right) + \ln \left(\frac{1+x^2}{2} \right) - 2\tan^{-1}x + \frac {\pi}{2}, & \chi<0 \text { 时} \\
+      -5\chi, & \chi \geq 0 \text { 时} \\
+\end{cases}
+\end{equation}
+其中$x=(1-16\chi)^{\frac{1}{4}}$。
 
 
 \subsection{单层植被湍流交换}
