@@ -785,7 +785,7 @@ z_{0} = (h-d)\exp (-\kappa \gamma + \Psi_{h})
 \end{align}
 根据Garratt [1992]：
 \begin{equation}
-\int_{z_{w}}^{z} \frac{\phi - 1}{z-d} \,dz = -\psi_u \left(\frac{z-d}{L} \right) + -\psi_u \left(\frac{z_{w}-d}{L} \right)
+\int_{z_{w}}^{z} \frac{\phi - 1}{z-d} \,dz = -\psi_u \left(\frac{z-d}{L} \right) + \psi_u \left(\frac{z_{w}-d}{L} \right)
 \end{equation}
 其中$\psi_u(\chi )$在稳定和不稳定条件下具有不同的形式：
 \begin{equation}
@@ -795,6 +795,36 @@ z_{0} = (h-d)\exp (-\kappa \gamma + \Psi_{h})
 \end{cases}
 \end{equation}
 其中$x=(1-16\chi)^{\frac{1}{4}}$。
+
+为确保惯性子层风速满足稳定度调整下的对数律，即：
+\begin{equation}\label{u_iner}
+\frac{\kappa U_{h}}{u_{*}} = \ln \left(\frac{z-d}{z_{0}}\right) + \int_{z_{0}+d}^{z} \frac{\phi - 1}{z-d} \,dz
+\end{equation}
+方程(\ref{u_rsl_iner})右边最后三项之和(当$z=z_{w}$)必须满足：
+\begin{equation}
+\Psi_{h} + \left[\int_{h}^{z_{w}} \frac{\phi}{z_{w}-d} \,dz - \ln \left(\frac{z_{w}-d}{h-d}\right) \right] = \int_{z_{0}+d}^{z_{w}} \frac{\phi - 1}{z-d} \,dz
+\end{equation}
+即：
+\begin{align}\label{Psih_general}
+\Psi_{h} =& \ln \left(\frac{z_{w}-d}{h-d}\right) - \int_{h}^{z_{w}} \frac{\phi}{z_{w}-d} \,dz
++ \int_{z_{0}+d}^{z_{w}} \frac{\phi - 1}{z-d} \,dz \nonumber \\
+=& \ln \left(c_{w}\right) -\frac{1}{z_{w}-d} \int_{h}^{z_{w}} \phi \,dz - \psi_u \left(\frac{z_{w}-d}{L} \right)
++ \psi_u \left(\frac{z_{0}}{L} \right)
+\end{align}
+其中$c_{w}=(z_{w}-d)/(h-d)$为大于1的常数。
+
+由方程(\ref{Psih_general})易知$\Psi_{h}$在不稳定条件下($z_{w}/L < 0$)的具体表达式：
+\begin{equation}\label{Psih_unstable}
+\Psi_{h} = \ln \left(c_{w}\right) + \frac{L}{12\left(z_{w}-d\right)} \left[\left(1-16\frac{z_{w}}{L}\right)^{3/4} 
+- \left(1-16\frac{h}{L}\right)^{3/4} \right] - \psi_u \left(\frac{z_{w}-d}{L} \right) + \psi_u \left(\frac{z_{0}}{L} \right)
+\end{equation}
+在稳定条件下($z_{w}/L \geq 0$):
+\begin{equation}\label{Psih_stable}
+\Psi_{h} = \ln \left(c_{w}\right) + \left(1-\frac{1}{c_{w}}\right) \left[1+\frac{5\left(z_{w}+h\right)}{2L}\right]
++ \frac{5\left(z_{w}-d\right)}{L} - \frac{5z_{0}}{L}
+\end{equation}
+
+结合方程(\ref{z0_rsl})和(\ref{Psih_unstable})、(\ref{Psih_stable})即可用于计算考虑稳定度影响的植被粗糙度。
 
 
 \subsection{单层植被湍流交换}
